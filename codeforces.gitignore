@@ -1,0 +1,14 @@
+# Ignore everything
+*
+
+# But allow folders
+!*/
+
+# Allow .cpp and .c files
+!*.cpp
+!*.c
+
+# Still ignore unwanted file types
+*.txt
+*.bin
+*.exe
