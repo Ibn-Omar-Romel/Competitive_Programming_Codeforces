@@ -12,38 +12,6 @@ using namespace std;
 
 #define fr(a, b) for(int i = a; i < b; i++) 
 
-
-// void solve() {
-//     int n, m;
-//     cin >> n >> m;
-
-//     vector<vector<int>> vec(n, vector<int>(m));
-
-//     for(int i = 0; i < n; i++) {
-//         for(int j = 0; j < m; j++) {
-//             char x;
-//             cin >> x;
-//             vec[i][j] = x - '0';
-//         }
-//     }
-
-//     for (int i = n - 1; i >= 1; i--) {
-//         for(int j = m - 1; j >= 1; j--) {
-//             if (vec[i][j] == 1) {
-//                 if (vec[i][j-1] == 1 || vec[i-1][j] == 1) {
-//                     continue;
-//                 } else {
-//                     no;
-//                     return;
-//                 }
-//             }
-//         }
-//     }
-
-//     yes;
-// }
-
-
 void solve() {
     int n, m;
     cin >> n >> m;
