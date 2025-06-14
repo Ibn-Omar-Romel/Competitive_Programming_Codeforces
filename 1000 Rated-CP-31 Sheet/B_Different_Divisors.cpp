@@ -2,7 +2,7 @@
 
 using namespace std;
 
-#define ll unsigned long long int
+#define ll long long int
 #define yes cout << "YES\n"
 #define no cout << "NO\n"
 #define vsort sort( vec.begin(), vec.end())
@@ -16,26 +16,11 @@ using namespace std;
 
 void solve() {
 
-    int n;
+    ll n;
     cin >> n;
 
-    vector<int>vec(n);
-    map<int, int>mp;
-    bool flag = false;
-
-    fr(0, n) {
-        cin >> vec[i];
-        mp[vec[i]]++;
-    }
-
-    for(auto [a,b] : mp) {
-        if(b >=2 ){
-            yes;
-            return;
-        }
-    }
-    no;
-} 
+    cout << (1+n) * (1+n+n) << endl;
+}
 
 
 int main() {
