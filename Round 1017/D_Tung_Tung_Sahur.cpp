@@ -17,8 +17,34 @@ using namespace std;
 void solve() {
     string p, s;
     cin >> p >> s;
-
     
+    ll i = 0, j = 0;
+    while(i < p.size() && j < s.size()) {
+
+        ll count1 = 0;
+        char ch = p[i];
+
+        while(i < p.size() and p[i] == ch) {
+            count1++;
+            i++;
+        }
+
+        ll count2 = 0;
+        while(j < s.size() and s[j] == ch) {
+            count2++;
+            j++;
+        }
+
+        if (count2 < count1 || count2 > (count1 + count1)) {
+            no;
+            return;
+        }
+    }
+    if (i == p.size() and j == s.size())
+        yes;
+    else   
+        no;
+
 }
 
 

@@ -27,6 +27,7 @@ void solve() {
         }
     }
 
+    // finding the missing value
     int value = 0;
     int a = 1;
     for (auto it : st) {
@@ -36,19 +37,20 @@ void solve() {
         }
         a++;
     }
-    //cout << value << endl;
     if (value == 0) 
         value = st.size() +1;
 
     cout << value << " ";
+
+
+    // printing the rest
     for (int i = 0; i < n; i++) {
         cout << vec[0][i] << " ";
     }
     for (int i = 1; i < n; i++) {
         cout << vec[i][n-1] << " ";
     }
-    cout << endl;
-    
+    cout << endl;  
 }
 
 
