@@ -19,28 +19,20 @@ void solve() {
     int n;
     cin >> n;
 
-    string s; 
+    string s;
     cin >> s;
 
-    set<char>st1;
-    set<char>st2;
-
-    vector<int> vec1(n), vec2(n+1);
-
-    for (int i = 0, j = n-1; i < n, j >= 0; i++, j--) {
-
-        st1.insert(s[i]);
-        st2.insert(s[j]);
-
-        vec1[i] = st1.size();
-        vec2[j] = st2.size();
+    int i = 0, j = n-1;
+    while(i < j) {
+        if ((s[i] == '0' and s[j] == '1') || (s[i] == '1' and s[j] == '0')) {
+            i++;
+            j--;
+        }
+        else {
+            break;
+        }
     }
-
-    int ans = 0;
-    for (int i = 0; i < n; i++) {
-        ans = max(vec1[i]+vec2[i+1], ans);
-    }
-    cout << ans << endl;
+    cout << j - i + 1<< endl;
 }
 
 

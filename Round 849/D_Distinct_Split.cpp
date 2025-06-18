@@ -19,20 +19,20 @@ void solve() {
     int n;
     cin >> n;
 
-    string s; 
+    string s;
     cin >> s;
 
-    set<char>st1;
-    set<char>st2;
+    set<int>st1;
+    set<int>st2;
 
-    vector<int> vec1(n), vec2(n+1);
-
+    vector<int>vec1(n), vec2(n+1);
+    
     for (int i = 0, j = n-1; i < n, j >= 0; i++, j--) {
 
         st1.insert(s[i]);
-        st2.insert(s[j]);
-
         vec1[i] = st1.size();
+
+        st2.insert(s[j]);
         vec2[j] = st2.size();
     }
 

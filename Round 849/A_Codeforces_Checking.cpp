@@ -16,31 +16,15 @@ using namespace std;
 
 void solve() {
 
-    int n;
-    cin >> n;
+    string s = "codeforces";
+    char ch;
+    cin >> ch;
 
-    string s; 
-    cin >> s;
+    if (s.find(ch) == string::npos) {
+        no;
+    }else   
+        yes;
 
-    set<char>st1;
-    set<char>st2;
-
-    vector<int> vec1(n), vec2(n+1);
-
-    for (int i = 0, j = n-1; i < n, j >= 0; i++, j--) {
-
-        st1.insert(s[i]);
-        st2.insert(s[j]);
-
-        vec1[i] = st1.size();
-        vec2[j] = st2.size();
-    }
-
-    int ans = 0;
-    for (int i = 0; i < n; i++) {
-        ans = max(vec1[i]+vec2[i+1], ans);
-    }
-    cout << ans << endl;
 }
 
 
