@@ -15,7 +15,6 @@ using namespace std;
 
 
 vector<bool> prime(1e7 + 1, true);
-
 void SieveOfEratosthenes() {
 
     prime[0] = prime[1] = false;
@@ -28,15 +27,14 @@ void SieveOfEratosthenes() {
     }
 }
 
-
 bool isPrime(int n) {
-
-    for (int i = 0; i <= n; i++) {
+    if (n < 2) return false;
+    for (int i = 2; 1LL * i * i <= n; i++) {
         if (n % i == 0)
             return false;
     }
     return true;
-} 
+}
 
 void solve() {
 
@@ -55,7 +53,6 @@ void solve() {
         else {
             no;
         }
-
     } 
     else {
         if (prime[x] and k == 1) {
@@ -65,8 +62,6 @@ void solve() {
             no;
         }
     }
-    
-    
 }
 
 

@@ -16,47 +16,38 @@ using namespace std;
 void solve() {
     ll n, k;
     cin >> n >> k;
-    vector<ll> vec(n);
-
-    fr(0,n) 
-        cin >> vec[i];
-
-    ll ans = 0;
-    for (auto v : vec) {
-
-        int a = __builtin_popcountll(v);
-        ans += a;
+    vector<ll>v(n);
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
     }
+
+
+    ll total = 0;
     
-    vector<ll> cost;
-    cost.reserve(n * 60);
+    for (int i = 0; i <= 60; i++) {
 
-    for (auto v : vec) {
-        ll cur = v;
-        while (true) {
-            int p = __builtin_ctzll(~cur); 
-            if (p >= 60) 
-                break;
-            ll c = 1ULL << p;
-            if (c > (ll)k) 
-                break;
-
-            cost.push_back(c);
-            cur += c;
+        ll setOne = 0, setZero = 0;
+        for (int j = 0; j < n; j++) {
+            if (v[j] & (1LL << i)) {
+                setOne++;
+            }
+            else {
+                setZero++;
+            }
         }
+
+        ll index_value = (1LL << i); // value of that index, like if index was 2, then 2^2 = 4 
+
+        ll minimum_operation = min(k/index_value , setZero); // minimum operation that I can perform
+
+        total += (setOne + minimum_operation); // adding new values
+
+        k -= (index_value * minimum_operation); // subtracting k from the values
+
+        // if (k < index_value) // no more changes cause next index value will be bigger
+        //     break;
     }
-
-    sort(cost.begin(), cost.end()); 
-
-    ll used = 0;
-    long long gained = 0;
-    for (auto c : cost) {
-        if (used + c > (ll)k) break;
-        used += c;
-        ++gained;
-    }
-
-    cout << ans + gained << '\n';
+    cout << total << endl;
 }
 
 
