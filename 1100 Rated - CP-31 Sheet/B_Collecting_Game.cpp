@@ -19,20 +19,27 @@ void solve() {
     int n;
     cin >> n;
 
-    ll sum = 0;
     vector<int>vec(n);
     for (int i = 0; i < n; i++) {
         cin >> vec[i];
-        sum += vec[i];
     }
+
+    vector<int> temp = vec; // contains the main array
     sort(vec.begin(), vec.end());
+
     
-    map<int, int>mp;
-    ll value;
-    for (int i = n-1; i >= 0; i--) {
-        value = sum - vec[i];
-        if (value <= vec[i]) 
+    map<int,int>mp;
+    ll sum = 0;
+    for (int i = 0; i < n; i++) {
+        sum += vec[i];
+        mp[vec[i]] = sum;
     }
+
+    for (int i = 0; i < n; i++) {
+        auto it = upper_bound(vec.begin(), vec.end(), mp[temp[i]]);
+        cout << it - vec.begin() - 1 << " ";
+    }
+    cout << endl;
 }
 
 
