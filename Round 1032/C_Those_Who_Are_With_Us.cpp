@@ -15,107 +15,98 @@ using namespace std;
 
 
 // void solve() {
-
 //     int n, m;
 //     cin >> n >> m;
 
 //     vector<vector<int>> vec(n, vector<int>(m));
-//     int maxvalue = INT_MIN;
+//     ll value = 0;
 
+//     int mx = INT_MIN;
 //     for (int i = 0; i < n; i++) {
 //         for (int j = 0; j < m; j++) {
 //             cin >> vec[i][j];
-
-//             maxvalue = max(maxvalue, vec[i][j]);
+//             mx = max(mx, vec[i][j]);
 //         }
 //     }
 
-//     bool checkflag = false, redflag = false;
-//     int firstindex = -1, index = -1 ;
-
+//     map<int, int>row, col;
+    
 //     for (int i = 0; i < n; i++) {
 //         for (int j = 0; j < m; j++) {
-//             if (vec[i][j] == maxvalue and checkflag == false) {
-//                 checkflag = true;
-//                 firstindex = j;
-//                 break;
-//             }   
-//             else if (vec[i][j] == maxvalue and checkflag == true) {
-//                 redflag == true;
-//                 if (j != firstindex)  {
-//                     cout << maxvalue;
-//                     return;
-//                 }     
+//             if (vec[i][j] == mx) {
+//                 row[i]++;
+//                 col[j]++;
 //             }
 //         }
-
 //     }
 
-//     bool checkflagsecond = false, redflagsecond = false;
-
-//     for (int i = 0; i < n; i++) {
-//         for (int j = 0; j < m; j++) {
-
+//     //check if row ok
+//     bool flag = false;
+//     set<int>row_st;
+//     for (auto it : row) {
+//         if (it.second > 1) { // multiple value in a row
+//             if (flag == false) // first multiple row
+//                 flag = true;
+//             else {
+//                 cout << mx << endl;
+//                 return;
+//             }
+//         }
+//         else {
+//             row_st.insert(it.first);
 //         }
 //     }
-    
 
+//     for (auto i : row_st) {
 
-//     if (checkflag == true and checkflagsecond == true)
-//         cout << maxvalue - 1 << endl;
-//     else if (checkflag == false and redflagsecond == false)
-//         cout << maxvalue -1 << endl;
-//     else {
-//         cout << maxvalue << endl;
+//         int count = 0;
+//         for(int j = 0; j < m; j++) {
+//             if (vec[i][j] == mx and count == 0) {
+//                 count++;
+//             }
+//             else {
+//                 cout << mx << endl;
+//                 return;
+//             }
+//         }
 //     }
+
+
+//     //check if column ok
+//     flag = false;
+//     set<int>col_st;
+//     for (auto it : col) {
+//         if (it.second > 1) { // multiple value in a row
+//             if (flag == false) // first multiple row
+//                 flag = true;
+//             else {
+//                 cout << mx << endl;
+//                 return;
+//             }
+//         }
+//         else {
+//             col_st.insert(it.first);
+//         }
+//     }
+
+//     for (auto i : col_st) {
+
+//         int count = 0;
+//         for(int j = 0; j < n; j++) {
+//             if (vec[j][i] == mx and count == 0) {
+//                 count++;
+//             }
+//             else {
+//                 cout << mx << endl;
+//                 return;
+//             }
+//         }
+//     }
+
+//     cout << mx-1 << endl;    
 // }
 
 
-
-void solve() {
-    int n, m;
-    cin >> n >> m;
-
-    vector<vector<ll>> vec(n, vector<ll>(m));
-    ll value = 0;
-
-    for (int i = 0; i < n; i++) {
-        for (int j = 0; j < m; j++) {
-            cin >> vec[i][j];
-            
-            if (value < vec[i][j])
-                value = vec[i][j];
-        }
-    }
-
-   
-    vector<pair<ll,ll>>v;
-    
-    for (int i = 0; i < n; i++) {
-
-        for (int j = 0; j < m; j++) {
-
-            if (vec[i][j] == value) {
-
-                v.push_back({i, j});
-            }
-        }
-    }
-
-    for (int i = 0; i < n; i++) {
-        set<ll>st;
-        for ( auto &it : v ) {
-            if (it.first != i) {
-                st.insert(it.second);
-            }
-        }
-        if ( st.size() <= 1 ) {
-            cout << value - 1 << endl;
-            return;
-        }
-    }
-    cout << value << endl;
-}
 
 
 
