@@ -16,16 +16,18 @@ using namespace std;
 
 void solve() {
 
-    int n;
-    cin >> n;
+    int n, m;
+    cin >> n >> m;
 
-    int minvalue = 9;
-
-    while(n > 0) {
-        minvalue = min(minvalue, n % 10);
-        n /= 10;
+    if ( n == 1 || m == 1) {
+        no;
     }
-    cout << minvalue << endl;
+    else if (n == 2 and m == 2) {
+        no;
+    }
+    else {
+        yes;
+    }
 }
 
 

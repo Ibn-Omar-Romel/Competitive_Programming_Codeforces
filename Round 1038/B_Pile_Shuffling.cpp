@@ -19,13 +19,23 @@ void solve() {
     int n;
     cin >> n;
 
-    int minvalue = 9;
+    ll moves = 0;
 
-    while(n > 0) {
-        minvalue = min(minvalue, n % 10);
-        n /= 10;
+    for (int i = 0; i < n; i++) {
+        ll a, b, c, d;
+        cin >> a >> b >> c >> d;
+
+        if (a > c) { // if there is more zeros in the pile, reduce them
+            moves += (a-c);
+        }
+
+        if (b > d) {
+            moves += (b-d); // there is more ones than we need
+            moves += min(a, c); // we need to reduce the number of zeros first
+        }
     }
-    cout << minvalue << endl;
+
+    cout << moves << '\n';
 }
 
 
